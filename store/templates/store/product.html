@@ -1,0 +1,71 @@
+{% extends 'store/base.html' %}
+
+{% comment %} SEO настройка страницы, метатеги, тайтл и так далее {% endcomment %}
+{% block description %}{{product.meta_description}}{% endblock description %}
+{% block title %}{{product.full_title}}{% endblock title %}
+
+{% block main %}
+<main>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <img src="{{product.image.url}}" alt="{{product.alt}}" class="img-fluid p-2 center-block">
+            </div>
+            <div class="col-md-6 mt-5">
+                <h1 class="lead fw-bold text-black fs-2">{{product.title}}</h1>
+                <p class="lead">
+                    <span class="badge rounded-pill bg-success fs-6">{{product.price}} грн.</span>
+                </p>
+                <p class="fs-6">{{product.description}}</p>
+                <div class="d-flex justify-content-center">
+                    <div class="overflow-hidden rounded col-12 border border-1">
+                        <table class="table table-light table-striped mb-0">
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="fw-normal text-muted">Действующее вещество</th>
+                                    <td>{{product.active_substance}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="fw-normal text-muted">Производитель</th>
+                                    <td>{{product.manufacturer}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="fw-normal text-muted">Форма выпуска</th>
+                                    <td>{{product.release_form}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="col-7 fw-normal text-muted">Код ATX</th>
+                                    <td сlass="col-4">{{product.packaging}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="fw-normal text-muted">Кол-во в упаковке</th>
+                                    <td>{{product.qty_in_a_package}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center pt-4">
+            <div class="col-lg-9">{{product.full_description|safe}}</div>
+        </div>
+
+        <div class="row">
+            <hr class="my-4">
+            <h2 class="lead text-black fw-normal text-center fs-1 mb-3">Как с нами связаться?</h2>
+            <p class="lead fs-3 mt-1 mb-4 text-center"><span class="badge bg-success"><a href="tel:+380667777777" class="a_clear text-default">{{product.phone}} <i class="fa fa-phone" aria-hidden="true"></i></a></span></p>
+        </div>
+        <div class="row justify-content-center mb-5">
+            <div class="card" style="width: 30rem; border-width: 0;">
+                <ul class="list-group list-group-flush fs-6">
+                  <li class="list-group-item">Принимаем звонки в любое время</li>
+                  <li class="list-group-item">Поддерживаем связь WhatsApp, Viber и Telegram</li>
+                  <li class="list-group-item">Доставка по всей Украине через сервисы Новой Почты</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock main %}

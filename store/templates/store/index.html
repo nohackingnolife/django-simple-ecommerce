@@ -1,0 +1,142 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% comment %} SEO настройка страницы, метатеги, тайтл и так далее {% endcomment %}
+{% block description %}{{index_description}}{% endblock description %}
+{% block title %}{{index_title}}{% endblock title %}
+
+{% comment %} создаем активной href в nav-bar {% endcomment %}
+{% block nav_cataloge %} active{% endblock nav_cataloge %}
+
+{% block main %}
+<main>
+  <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
+        <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="container">
+                <div class="row p-5">
+                    <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                        <img class="img-fluid" src="{% static 'store/media/girl2.jpg' %}" alt="Девушка фармацевт принимает заказ у клиента">
+                    </div>
+                    <div class="col-lg-6 mb-0 d-flex align-items-center">
+                        <div class="text-align-left align-self-center">
+                            <h1 class="h1 text-success"><b>Народная</b> аптека</h1>
+                            <h3 class="h2">Ваша лучшая онлайн-аптека 😉</h3>
+                            <p>
+                                У нас покупают быстро, покупают надежно и по самым низким ценам в интернете, даже выходя из дома! Мы предоставляем широчайший ассортимент медицинских препаратов иностранного производства
+                            </p>
+                            <a href="{% url 'about' %}"><button type="button" class="btn btn-success">Подробнее о нас</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+          <div class="container">
+            <div class="row p-5">
+                <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                    <img class="img-fluid" src="{% static 'store/media/girl.jpg' %}" alt="Девушка фармацевт говорит по телефону, консультирует">
+                </div>
+                <div class="col-lg-6 mb-0 d-flex align-items-center">
+                    <div class="text-align-left align-self-center">
+                        <h1 class="h2 text-success fs-1"><b>Народная</b> аптека</h1>
+                        <h3 class="h2">Мы всегда на связи 😎</h3>
+                        <p>
+                            24 часа в сутки наши операторы готовы вас проконсультировать по любым вопросам покупки, доставки на дом и всему прочему. Также отвечаем и принимаем звонки во всех популярных месенджерах
+                        </p>
+                        <a href="{% url 'contacts' %}""><button type="button" class="btn btn-success">Наши контакты</button></a>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="prev">
+        <i class="fas fa-chevron-left"></i>
+    </a>
+    <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="next">
+        <i class="fas fa-chevron-right"></i>
+    </a>
+  </div>
+
+  <!-- Поиск по названию + категории -->
+  <div class="container d-flex flex-wrap justify-content-start">
+    <form class="mt-4 d-flex" action="{% url 'index' %}" method="GET">
+      <input class="form-control me-2" type="search" name="search" placeholder="Введите название" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit" style="border-outline: 0;"><i class="fa fa-search" aria-hidden="true"></i></button>
+    </form>
+  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-light mb-3 mt-1">
+    <div class="container">
+      <span class="navbar-brand">Категории:</span>
+      <button class="navbar-toggler" type="submit" data-bs-toggle="collapse" data-bs-target="#nextNav" aria-controls="nextNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon text-dark"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nextNav">
+        <ul class="navbar-nav">
+        {% comment %} ищем и добавляем категории {% endcomment %}
+        {% if category_cheker == 0 %}
+          <li class="nav-item">
+            <a href="{% url 'index' %}" class="nav-link active">Все</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a href="{% url 'index' %}" class="nav-link">Все</a>
+          </li>
+        {% endif %}
+        {% for c in categories %}
+          {% if c.pk == category_cheker %}
+            <li class="nav-item">
+              <a href="{% url 'category' c.slug %}" class="nav-link active">{{c.name}}</a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a href="{{c.get_absolute_url}}" class="nav-link">{{c.name}}</a>
+            </li>
+          {% endif %}
+        {% endfor %}
+        {% comment %} ищем и добавляем категории {% endcomment %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Products -->
+  <div class="container">
+    {% if category_cheker == -2 %}
+    <h2>«{{search_query}}»</h2>
+    <p class="text-muted mb-5">По данному запроса ничего не найдено</p>
+    {% elif search_query %}
+    <h2>«{{search_query}}»</h2>
+    <p class="text-muted mb-5">По данному запросу найдены следующие товары:</p>
+    {% endif %}
+    {% if category_cheker != -2 %}
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mb-4">
+      {% comment %} ищем и записываем наши товары по шаблону {% endcomment %}
+      {% for p in products %}
+      <div class="col">
+        <div class="card shadow_">
+          <a href="{{p.get_absolute_url}}"><img class="card-img-top" src="{{p.mini_image.url}}" alt="{{p.alt}}"></a>
+          <div class="card-body">
+            <h4 class="card-title text-dark">{{p.short_title}}</h4>
+            <h4><span class="badge rounded-pill bg-success">{{p.price}} грн.</span></h4>
+              <p class="card-text text-secondary">{{p.short_description}}</p>
+          </div>
+          <div class="card-footer">
+            <a href="{{p.get_absolute_url}}" class="text-black custom_href">Подробнее</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% comment %} конец шаблона карточки товара {% endcomment %}
+    </div>
+    {% endif %}
+  </div>
+</main>
+{% endblock main %}
+

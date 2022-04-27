@@ -1,0 +1,87 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% comment %} SEO настройка страницы, метатеги, тайтл и так далее {% endcomment %}
+{% block description %}{{index_description}}{% endblock description %}
+{% block title %}{{index_title}}{% endblock title %}
+
+{% comment %} создаем активной href в nav-bar {% endcomment %}
+{% block nav_cataloge %} active{% endblock nav_cataloge %}
+
+{% block main %}
+
+<div class="container-fluid bg-light py-5">
+    <div class="col-md-6 m-auto text-center">
+        <h1 class="h1">Связаться с нами</h1>
+        <p>
+            На данный момент оформление заказа осуществляется по сотовой связи (или в месенджерах), онлайн заказов нет, приносим свои извинения 😟
+        </p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <hr class="my-4">
+        <h2 class="lead text-black fw-normal text-center fs-1 mb-3">Позвоните нам</h2>
+        <p class="lead fs-3 mt-1 mb-4 text-center"><span class="badge bg-success"><a href="tel:+380667777777" class="a_clear text-default">{{phone}} <i class="fa fa-phone" aria-hidden="true"></i></a></span></p>
+    </div>
+    <div class="row justify-content-center mb-5">
+        <div class="card" style="width: 30rem; border-width: 0;">
+            <ul class="list-group list-group-flush fs-6">
+              <li class="list-group-item">Принимаем звонки в любое время </li>
+              <li class="list-group-item">WhatsApp <i class="fab fa-whatsapp"></i> Viber <i class="fab fa-viber"></i> Telegram <i class="fab fa-telegram"></i></li>
+              <li class="list-group-item">Доставка по всей Украине через сервисы Новой Почты</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container pb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        Можете ли помочь с выбором нужного лекарства?
+                    </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">Да, конечно, это наша работа 😃</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        Когда можно звонить?
+                    </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">В любое удобное для вас время 😁</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                        В каких месенджерах можно связаться?
+                    </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">Помимо сотой связи мы можем отвечать Вам в WhatsApp, Viber и Telegram 🙃</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                        Сколько стоит звонок?
+                    </button>
+                    </h2>
+                    <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">Плата взымается в завимости от тарифа вашего оператора 😎</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock main %}

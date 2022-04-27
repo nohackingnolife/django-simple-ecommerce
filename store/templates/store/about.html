@@ -1,0 +1,106 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% comment %} SEO настройка страницы, метатеги, тайтл и так далее {% endcomment %}
+{% block description %}{{index_description}}{% endblock description %}
+{% block title %}{{index_title}}{% endblock title %}
+
+{% comment %} создаем активной href в nav-bar {% endcomment %}
+{% block nav_about %} active{% endblock nav_about %}
+
+{% block main %}
+<section class="bg-success-original py-5">
+    <div class="container">
+        <div class="row align-items-center py-5">
+            <div class="col-md-8 text-white">
+                <h1>Народная аптека</h1>
+                <h2 class="fs-4 fw-light">
+                    <a href="narod-apteka.com.ua" class="a_clear2">narod-apteka.com.ua</a> — Ваш народный сервис по доставке сертифицировнных медицинских товаров из разных стран. Работая с нами Вы всегда будете получать свой товар в кротчайшие сроки по самой дешевой цене. Ваша Народная Аптека 😉
+                </h2>
+                </div>
+            <div class="col-md-4">
+                <img class="img-fluid" src="{% static 'store/media/about_girl.jpg' %}" alt="Девушка фармацевт стоит за кассой">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container pt-5 pb-1">
+    <div class="row text-center pt-5 pb-3">
+        <div class="col-lg-6 m-auto">
+            <h2 class="h1 fw-light">Наши преимущества</h1>
+            <p>
+                Их далеко не мало =)
+            </p>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-md-6 col-lg-3 pb-5">
+            <div class="h-100 py-5 services-icon-wap shadow">
+                <div class="h1 text-success-original text-center"><i class="fa fa-truck fa-lg"></i></div>
+                <h2 class="h5 mt-4 text-center">Бесплатная Доставка</h2>
+            </div>
+         </div>
+
+        <div class="col-md-6 col-lg-3 pb-5">
+            <div class="h-100 py-5 services-icon-wap shadow">
+                <div class="h1 text-success-original text-center"><i class="fas fa-exchange-alt"></i></div>
+                <h2 class="h5 mt-4 text-center">Гарантия качества</h2>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 pb-5">
+            <div class="h-100 py-5 services-icon-wap shadow">
+                <div class="h1 text-success-original text-center"><i class="fa fa-percent"></i></div>
+                <h2 class="h5 mt-4 text-center">Никзие цены</h2>
+             </div>
+         </div>
+
+        <div class="col-md-6 col-lg-3 pb-5">
+            <div class="h-100 py-5 services-icon-wap shadow">
+                <div class="h1 text-success-original text-center"><i class="fa fa-user"></i></div>
+                <h2 class="h5 mt-4 text-center">24 часа в сутки</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container pb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        Большой ассортимент иностранной продукции
+                    </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">В нашем магазине вы найдете большое количество иностранной продукции, которой достаточно мало в пределах Украины, что может очень значить облегчить Вам, как покупателю, жизнь</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        Самые низкие цены на рынке
+                    </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">Благодаря тому, что мы собственно ручно производим импорт иностранных лекарств, то и цена на продукцию ниже, чем у конкурентов, что также является для Вас приятным бонусом</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                        Оформление заказа в одну минуту
+                    </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">Для того чтобы оформить заказ, или же получить консультацию по выбору того или иного продукта, достаточно просто позвонить на наш номер, который указан в контаках, либо же связаться с нами в любом удобном для Вас месенджере</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main %}
